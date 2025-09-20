@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static socialaccount widget_tweaks %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+<style>
+  .auth-card { border-radius: 1rem; }
+  .auth-card .btn { height: 48px; white-space: nowrap; } /* prevent wrapping */
+  .auth-card img { flex-shrink: 0; } /* stop icon from shrinking */
+  /* Ensure floating inputs are same height */
+  .form-floating > .form-control { height: 56px; padding: 1rem .75rem; }
+  .form-floating > label { padding: .75rem .75rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg auth-card w-100" style="max-width: 440px;">
+    <div class="card-body p-5">
+      <h2 class="text-center mb-4">Sign In</h2>
+
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
+
+      <form method="post" action="{% url 'account_login' %}" novalidate>
+        {% csrf_token %}
+
+        <!-- Email -->
+        <div class="form-floating mb-3">
+          {% render_field form.login class="form-control" placeholder="you@example.com" autocomplete="email" %}
+          <label for="{{ form.login.id_for_label }}">Email</label>
+          {% for error in form.login.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+          {% render_field form.password class="form-control" placeholder="••••••••" autocomplete="current-password" %}
+          <label for="{{ form.password.id_for_label }}">Password</label>
+          {% for error in form.password.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="form-check">
+            {% render_field form.remember class="form-check-input" %}
+            <label class="form-check-label" for="{{ form.remember.id_for_label }}">Remember me</label>
+          </div>
+          <a href="{% url 'account_reset_password' %}" class="small">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3">Sign In</button>
+      </form>
+
+      <!-- Divider -->
+      <div class="text-center my-4">
+        <span class="text-muted">or continue with</span>
+      </div>
+
+      <!-- Social buttons -->
+      <div class="d-grid gap-3">
+        <!-- Google -->
+        <a href="{% provider_login_url 'google' %}"
+           class="btn btn-primary">
+          <img src="https://www.svgrepo.com/show/355037/google.svg"
+               alt="Google" class="me-2" width="20" height="20">
+          <span>Continue with Google</span>
+        </a>
+
+        <!-- Facebook -->
+        <a href="{% provider_login_url 'facebook' %}" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="me-2 bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.276c0-2.017 1.195-3.14 3.067-3.14.878 0 1.787.158 1.787.158v1.953h-1.009c-.993 0-1.303.621-1.303 1.258V8.05h2.169l-.334 2.155H9.497V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+          </svg>
+          <span>Continue with Facebook</span>
+        </a>
+      </div>
+
+      <p class="text-center mt-4 mb-0">
+        Don’t have an account? <a href="{% url 'account_signup' %}">Sign up</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

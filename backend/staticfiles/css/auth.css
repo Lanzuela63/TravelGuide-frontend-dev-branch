@@ -1,0 +1,87 @@
+/* shared/static/css/auth.css */
+
+body {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Vibrant gradient background */
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Modern font stack */
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent */
+    border-radius: 1rem; /* More rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stronger, softer shadow */
+    border: none; /* Remove default border */
+    overflow: hidden; /* Ensures content respects border-radius */
+}
+
+.card-body {
+    padding: 3rem; /* More internal padding */
+}
+
+.card-title {
+    font-weight: 700; /* Bolder title */
+    color: #333;
+    margin-bottom: 2rem; /* More space below title */
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 0.5rem; /* Rounded input fields */
+    border: 1px solid #ced4da;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #6a11cb; /* Focus color matches gradient */
+    box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(to right, #6a11cb 0%, #1c6cf6 100%); /* Gradient button */
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #2b75f6 0%, #6a11cb 100%); /* Reverse gradient on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Links */
+a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #2575fc;
+    text-decoration: underline;
+}
+
+/* Text alignment */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}

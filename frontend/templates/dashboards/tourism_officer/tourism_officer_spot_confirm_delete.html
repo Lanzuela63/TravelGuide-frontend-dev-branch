@@ -1,0 +1,16 @@
+{% extends "dashboards/tourism_officer_base.html" %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <h1>Delete Tourist Spot</h1>
+  <p>Are you sure you want to delete <strong>{{ spot.name }}</strong>?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'tourism_officer_dash:spot_list' %}" class="btn btn-secondary">No, cancel</a>
+  </form>
+</div>
+{% endblock %}

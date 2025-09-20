@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Explore Bicolandia{% endblock %}
+
+{% block content %}
+<section class="section bg-light">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-8">
+        <h2 class="heading" data-aos="fade-up">Explore Bicol Provinces</h2>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">
+          Discover the beauty, culture, and adventures waiting in each province of Bicol.
+        </p>
+      </div>
+    </div>
+
+    <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up">
+
+      <!-- Albay -->
+      <div class="item">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/Albay.png' %}" class="card-img-top" alt="Albay">
+          <div class="card-body text-center">
+            <h5 class="card-title">Discover Albay</h5>
+            <p class="card-text">Home to the majestic Mayon Volcano, Albay offers breathtaking views and rich cultural heritage.</p>
+            <button 
+              class="btn btn-primary" 
+              hx-get="{% url 'tourism:province_spots' 'albay' %}" 
+              hx-target="#provinceModalBody" 
+              data-bs-toggle="modal" 
+              data-bs-target="#provinceModal">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Camarines Sur -->
+      <div class="item">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/CamarinesSur.png' %}" class="card-img-top" alt="Camarines Sur">
+          <div class="card-body text-center">
+            <h5 class="card-title">Explore Camarines Sur</h5>
+            <p class="card-text">From wakeboarding adventure to serene lakes, CamSur is a paradise for thrill-seekers and nature lovers.</p>
+            <button 
+              class="btn btn-primary" 
+              hx-get="{% url 'tourism:province_spots' 'camsur' %}" 
+              hx-target="#provinceModalBody" 
+              data-bs-toggle="modal" 
+              data-bs-target="#provinceModal">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Camarines Norte -->
+      <div class="item">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/CamarinesNorte.png' %}" class="card-img-top" alt="Camarines Norte">
+          <div class="card-body text-center">
+            <h5 class="card-title">Discover Camarines Norte</h5>
+            <p class="card-text">Surf the waves of Bagasbas Beach and explore hidden islands across CamNorte.</p>
+            <button 
+              class="btn btn-primary" 
+              hx-get="{% url 'tourism:province_spots' 'camnorte' %}" 
+              hx-target="#provinceModalBody" 
+              data-bs-toggle="modal" 
+              data-bs-target="#provinceModal">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Catanduanes -->
+      <div class="item">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/Catanduanes.png' %}" class="card-img-top" alt="Catanduanes">
+          <div class="card-body text-center">
+            <h5 class="card-title">Explore Catanduanes</h5>
+            <p class="card-text">The Happy Island, home to Puraran’s world-class waves and lush natural scenery.</p>
+            <button 
+              class="btn btn-primary" 
+              hx-get="{% url 'tourism:province_spots' 'catanduanes' %}" 
+              hx-target="#provinceModalBody" 
+              data-bs-toggle="modal" 
+              data-bs-target="#provinceModal">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Masbate -->
+      <div class="item">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/Masbate.png' %}" class="card-img-top" alt="Masbate">
+          <div class="card-body text-center">
+            <h5 class="card-title">Discover Masbate</h5>
+            <p class="card-text">The Rodeo Capital of the Philippines, blending cowboy culture and pristine beaches.</p>
+            <button 
+              class="btn btn-primary" 
+              hx-get="{% url 'tourism:province_spots' 'masbate' %}" 
+              hx-target="#provinceModalBody" 
+              data-bs-toggle="modal" 
+              data-bs-target="#provinceModal">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sorsogon -->
+      <div class="item">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/Sorsogon.png' %}" class="card-img-top" alt="Sorsogon">
+          <div class="card-body text-center">
+            <h5 class="card-title">Visit Sorsogon</h5>
+            <p class="card-text">Swim with whale sharks, relax in Bulusan Lake, and explore untamed coasts.</p>
+            <button 
+              class="btn btn-primary" 
+              hx-get="{% url 'tourism:province_spots' 'sorsogon' %}" 
+              hx-target="#provinceModalBody" 
+              data-bs-toggle="modal" 
+              data-bs-target="#provinceModal">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Province Modal -->
+<div class="modal fade" id="provinceModal" tabindex="-1" aria-labelledby="provinceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ province.name }} - Attractions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="provinceModalBody">
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-2">Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.body.addEventListener("updateModalTitle", function(event) {
+    document.getElementById("provinceModalLabel").textContent = event.detail.title;
+  });
+</script>
+{% endblock %}

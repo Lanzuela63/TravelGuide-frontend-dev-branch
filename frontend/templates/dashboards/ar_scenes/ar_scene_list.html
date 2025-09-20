@@ -1,0 +1,52 @@
+{% extends "dashboards/dashboard_base.html" %}
+
+{% block title %}Manage AR Scenes{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Manage AR Scenes</h1>
+    <a href="{% url 'admin_dash:ar_scenes:add' %}" class="btn btn-primary">
+      <i class="fa-solid fa-plus me-2"></i> Add New Scene
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for scene in scenes %}
+          <tr>
+            <td>{{ scene.name }}</td>
+            <td>{{ scene.description|truncatewords:10 }}</td>
+            <td>{{ scene.latitude }}</td>
+            <td>{{ scene.longitude }}</td>
+            <td class="text-end">
+              <a href="{% url 'admin_dash:ar_scenes:edit' scene.id %}" class="btn btn-sm btn-outline-primary">
+                <i class="fa fa-pen"></i>
+              </a>
+              <a href="{% url 'admin_dash:ar_scenes:delete' scene.id %}" class="btn btn-sm btn-outline-danger">
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5" class="text-center text-muted">No AR scenes found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

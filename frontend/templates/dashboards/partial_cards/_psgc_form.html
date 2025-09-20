@@ -1,0 +1,24 @@
+<h3 class="mt-5">Manage PSGC</h3>
+<form method="post" hx-post="{% url 'admin_dash:add_city' %}" hx-target="#city-list">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-5">
+      <select name="province" class="form-select" required>
+        <option value="">Select Province</option>
+        {% for province in provinces %}
+          <option value="{{ province.id }}">{{ province.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-5">
+      <input type="text" name="city" class="form-control" placeholder="Enter City/Municipality" required>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Add City</button>
+    </div>
+  </div>
+</form>
+
+<div id="city-list" class="mt-3">
+  {% include "dashboards/partial_cards/_city_list.html" %}
+</div>

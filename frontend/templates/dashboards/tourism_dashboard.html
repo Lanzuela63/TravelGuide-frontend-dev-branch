@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Tourism Dashboard</h2>
+
+  <!-- Dashboard Cards -->
+  <div class="row">
+    {% for card in dashboard_cards %}
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ card.title }}</h5>
+            <p class="display-6">{{ card.value }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Recent Tourist Spots -->
+  <h3 class="mt-5">Recent Tourist Spots</h3>
+  {% if latest_spots %}
+    <ul class="list-group">
+      {% for spot in latest_spots %}
+        <li class="list-group-item">{{ spot.name }} ({{ spot.city.name }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No tourist spots available.</p>
+  {% endif %}
+</div>
+{% endblock %}

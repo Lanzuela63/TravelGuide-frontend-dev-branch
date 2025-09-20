@@ -1,0 +1,61 @@
+{% extends "dashboards/dashboard_base.html" %}
+
+{% block title %}{% if scene %}Edit{% else %}Add{% endif %} AR Scene{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>{% if scene %}Edit{% else %}Add{% endif %} AR Scene</h1>
+    <a href="{% url 'admin_dash:ar_scenes:list' %}" class="btn btn-secondary">
+      <i class="fa-solid fa-arrow-left me-2"></i> Back to List
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="id_name" class="form-label">Name</label>
+              {{ form.name }}
+            </div>
+            <div class="mb-3">
+              <label for="id_description" class="form-label">Description</label>
+              {{ form.description }}
+            </div>
+            <div class="mb-3">
+                <label for="id_latitude" class="form-label">Latitude</label>
+                {{ form.latitude }}
+            </div>
+            <div class="mb-3">
+                <label for="id_longitude" class="form-label">Longitude</label>
+                {{ form.longitude }}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="id_model_file" class="form-label">Model File</label>
+              {{ form.model_file }}
+              {% if scene.model_file %}
+                <p class="form-text">Current file: <a href="{{ scene.model_file.url }}">{{ scene.model_file.name }}</a></p>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="id_marker_image" class="form-label">Marker Image</label>
+              {{ form.marker_image }}
+              {% if scene.marker_image %}
+                <img src="{{ scene.marker_image.url }}" alt="{{ scene.name }}" class="img-fluid mt-2">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

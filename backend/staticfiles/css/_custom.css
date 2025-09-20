@@ -1,0 +1,56 @@
+/* Navbar Base */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  background: transparent;
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+
+.site-header .container {
+  max-width: 95%;
+  transition: max-width 0.4s ease, padding 0.4s ease, background 0.4s ease;
+}
+
+/* On scroll - shrink */
+.site-header.scrolled {
+  padding: 0.6rem 0;
+  background: rgba(0, 0, 0, 0.8);  /* darker bg for readability */
+  backdrop-filter: blur(8px);
+}
+
+.site-header.scrolled .container {
+  max-width: 1140px;
+}
+
+/* Navbar Links */
+.site-menu li a {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.site-menu li a:hover {
+  color: #ffcc00;  /* highlight hover */
+}
+
+/* Dropdown Fix */
+.dropdown-menu {
+  background: #fff;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+.dropdown-menu a {
+  color: #333;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+  color: #000;
+}

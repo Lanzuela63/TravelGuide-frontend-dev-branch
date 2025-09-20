@@ -1,0 +1,129 @@
+[
+  {
+    "model": "tourism.province",
+    "pk": 1,
+    "fields": {
+      "psgc_code": "050500000",
+      "name": "Albay"
+    }
+  },
+  {
+    "model": "tourism.province",
+    "pk": 2,
+    "fields": {
+      "psgc_code": "050600000",
+      "name": "Camarines Sur"
+    }
+  },
+  
+  {
+    "model": "tourism.province",
+    "pk": 4,
+    "fields": {
+      "psgc_code": "050800000",
+      "name": "Camarines Norte"
+    }
+  },
+  {
+    "model": "tourism.province",
+    "pk": 5,
+    "fields": {
+      "psgc_code": "052000000",
+      "name": "Catanduanes"
+    }
+  },
+  {
+    "model": "tourism.province",
+    "pk": 6,
+    "fields": {
+      "psgc_code": "054100000",
+      "name": "Masbate"
+    }
+  },
+
+  {
+    "model": "tourism.citymunicipality",
+    "pk": 1,
+    "fields": {
+      "psgc_code": "050501000",
+      "name": "Legazpi City",
+      "province": 1
+    }
+  },
+  {
+    "model": "tourism.citymunicipality",
+    "pk": 2,
+    "fields": {
+      "psgc_code": "050601000",
+      "name": "Naga City",
+      "province": 2
+    }
+  },
+  
+  {
+    "model": "tourism.citymunicipality",
+    "pk": 4,
+    "fields": {
+      "psgc_code": "050801000",
+      "name": "Daet",
+      "province": 4
+    }
+  },
+ 
+
+  {
+    "model": "tourism.touristspot",
+    "pk": 1,
+    "fields": {
+      "name": "Mayon Volcano",
+      "description": "The perfect cone volcano and iconic landmark of Albay.",
+      "city": 1,
+      "email": "info@mayon.com",
+      "image": "locations/mayon.jpg"
+    }
+  },
+  {
+    "model": "tourism.touristspot",
+    "pk": 2,
+    "fields": {
+      "name": "Cagsawa Ruins",
+      "description": "Historic ruins buried by Mayon's 1814 eruption.",
+      "city": 1,
+      "email": "info@cagsawa.com",
+      "image": "locations/cagsawa.jpg"
+    }
+  },
+  {
+    "model": "tourism.touristspot",
+    "pk": 3,
+    "fields": {
+      "name": "Caramoan Islands",
+      "description": "Pristine islands featured in Survivor series.",
+      "city": 2,
+      "email": "info@caramoan.com",
+      "image": "locations/caramoan.jpg"
+    }
+  },
+  {
+    "model": "tourism.touristspot",
+    "pk": 4,
+    "fields": {
+      "name": "CWC Wake Park",
+      "description": "Asia’s premier wakeboarding park.",
+      "city": 2,
+      "email": "info@cwc.com",
+      "image": "locations/cwc.jpg"
+    }
+  },
+  {
+    "model": "tourism.touristspot",
+    "pk": 5,
+    "fields": {
+      "name": "Donsol",
+      "description": "Whale shark interaction capital.",
+      "city": 3,
+      "email": "info@donsol.com",
+      "image": "locations/donsol.jpg"
+    }
+  }
+]

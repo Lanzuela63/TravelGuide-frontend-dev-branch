@@ -1,0 +1,57 @@
+psgc_code,name,level,province_name
+050500000,Albay,Province,
+051600000,Camarines Norte,Province,
+051700000,Camarines Sur,Province,
+052000000,Catanduanes,Province,
+054100000,Masbate,Province,
+056200000,Sorsogon,Province,
+050501000,Legazpi City,City/Municipality,Albay
+050502000,Tabaco City,City/Municipality,Albay
+050503000,Ligao City,City/Municipality,Albay
+050504000,Guinobatan,City/Municipality,Albay
+050505000,Daraga,City/Municipality,Albay
+050506000,Polangui,City/Municipality,Albay
+050507000,Sto. Domingo,City/Municipality,Albay
+050508000,Malilipot,City/Municipality,Albay
+050509000,Bacacay,City/Municipality,Albay
+050510000,Manito,City/Municipality,Albay
+051601000,Daet,City/Municipality,Camarines Norte
+051602000,Basud,City/Municipality,Camarines Norte
+051603000,Jose Panganiban,City/Municipality,Camarines Norte
+051604000,Mercedes,City/Municipality,Camarines Norte
+051605000,Labo,City/Municipality,Camarines Norte
+051606000,Paracale,City/Municipality,Camarines Norte
+051701000,Naga City,City/Municipality,Camarines Sur
+051702000,Iriga City,City/Municipality,Camarines Sur
+051703000,Caramoan,City/Municipality,Camarines Sur
+051704000,Goa,City/Municipality,Camarines Sur
+051705000,Pili,City/Municipality,Camarines Sur
+051706000,Libmanan,City/Municipality,Camarines Sur
+051707000,Calabanga,City/Municipality,Camarines Sur
+051708000,Sipocot,City/Municipality,Camarines Sur
+051709000,Ragay,City/Municipality,Camarines Sur
+051710000,Del Gallego,City/Municipality,Camarines Sur
+052001000,Virac,City/Municipality,Catanduanes
+052002000,Baras,City/Municipality,Catanduanes
+052003000,Bato,City/Municipality,Catanduanes
+052004000,Pandan,City/Municipality,Catanduanes
+052005000,San Andres,City/Municipality,Catanduanes
+052006000,San Miguel,City/Municipality,Catanduanes
+054101000,Masbate City,City/Municipality,Masbate
+054102000,Aroroy,City/Municipality,Masbate
+054103000,Baleno,City/Municipality,Masbate
+054104000,Batuan,City/Municipality,Masbate
+054105000,Cataingan,City/Municipality,Masbate
+054106000,Milagros,City/Municipality,Masbate
+054107000,Mobo,City/Municipality,Masbate
+054108000,Esperanza,City/Municipality,Masbate
+056201000,Sorsogon City,City/Municipality,Sorsogon
+056202000,Bulan,City/Municipality,Sorsogon
+056203000,Castilla,City/Municipality,Sorsogon
+056204000,Donsol,City/Municipality,Sorsogon
+056205000,Gubat,City/Municipality,Sorsogon
+056206000,Irosin,City/Municipality,Sorsogon
+056207000,Magallanes,City/Municipality,Sorsogon
+056208000,Matnog,City/Municipality,Sorsogon
+056209000,Pilar,City/Municipality,Sorsogon
+056210000,Juban,City/Municipality,Sorsogon

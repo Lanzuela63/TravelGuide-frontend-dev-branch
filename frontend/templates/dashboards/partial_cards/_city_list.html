@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>City/Municipality</th>
+      <th>Province</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for city in cities %}
+      <tr>
+        <td>{{ city.name }}</td>
+        <td>{{ city.province.name }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="2">No cities yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>

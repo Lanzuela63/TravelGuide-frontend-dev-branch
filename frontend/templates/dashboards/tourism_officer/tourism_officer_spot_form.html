@@ -1,0 +1,90 @@
+{% extends "dashboards/tourism_officer_base.html" %}
+
+{% block title %}{% if spot %}Edit{% else %}Add{% endif %} Tourist Spot{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>{% if spot %}Edit{% else %}Add{% endif %} Tourist Spot</h1>
+    <a href="{% url 'tourism_officer_dash:spot_list' %}" class="btn btn-secondary">
+      <i class="fa-solid fa-arrow-left me-2"></i> Back to List
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="id_name" class="form-label">Name</label>
+              {{ form.name }}
+            </div>
+            <div class="mb-3">
+              <label for="id_description" class="form-label">Description</label>
+              {{ form.description }}
+            </div>
+            <div class="mb-3">
+              <label for="id_province" class="form-label">Province</label>
+              {{ form.province }}
+            </div>
+            <div class="mb-3">
+                <label for="id_city" class="form-label">City</label>
+                {{ form.city }}
+            </div>
+            <div class="mb-3">
+                <label for="id_barangay" class="form-label">Barangay</label>
+                {{ form.barangay }}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="id_image" class="form-label">Image</label>
+              {{ form.image }}
+              {% if spot.image %}
+                <img src="{{ spot.image.url }}" alt="{{ spot.name }}" class="img-fluid mt-2">
+              {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_entrance_fee" class="form-label">Entrance Fee</label>
+                {{ form.entrance_fee }}
+            </div>
+            <div class="mb-3">
+                <label for="id_operating_hours" class="form-label">Operating Hours</label>
+                {{ form.operating_hours }}
+            </div>
+            <div class="mb-3">
+                <label for="id_contact_number" class="form-label">Contact Number</label>
+                {{ form.contact_number }}
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="mb-3">
+                <label for="id_website" class="form-label">Website</label>
+                {{ form.website }}
+            </div>
+            <div class="form-check mb-3">
+                {{ form.is_featured }}
+                <label for="id_is_featured" class="form-check-label">Featured</label>
+            </div>
+            <div class="form-check mb-3">
+                {{ form.is_active }}
+                <label for="id_is_active" class="form-check-label">Active</label>
+            </div>
+            <div class="form-check mb-3">
+                {{ form.show_in_carousel }}
+                <label for="id_show_in_carousel" class="form-check-label">Show in Carousel</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

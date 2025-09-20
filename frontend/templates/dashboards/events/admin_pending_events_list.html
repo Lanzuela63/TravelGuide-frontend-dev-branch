@@ -1,0 +1,64 @@
+{% extends "dashboards/dashboard_base.html" %}
+
+{% block title %}Pending Events{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Pending Events</h1>
+    {# Removed Add New Event button #}
+  </div>
+
+  <div class="card">
+    <div class="card-body table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Approved</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for event in events %}
+          <tr>
+            <td>{{ event.title }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.date|date:"M d, Y" }}</td>
+            <td>
+              {% if event.status == 'upcoming' %}
+                <span class="badge bg-info">Upcoming</span>
+              {% elif event.status == 'past' %}
+                <span class="badge bg-secondary">Past</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if event.is_approved %}
+                <span class="badge bg-success">Yes</span>
+              {% else %}
+                <span class="badge bg-warning">No</span>
+              {% endif %}
+            </td>
+            <td class="text-end">
+              <a href="{% url 'admin_dash:event_edit' event.id %}" class="btn btn-sm btn-outline-primary" title="View/Edit Event">
+                <i class="fa fa-pen"></i>
+              </a>
+              <a href="{% url 'admin_dash:event_delete' event.id %}" class="btn btn-sm btn-outline-danger" title="Delete Event">
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6" class="text-center text-muted">No pending events found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

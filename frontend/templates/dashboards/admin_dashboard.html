@@ -1,0 +1,98 @@
+{% extends "dashboards/dashboard_base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <h1 class="mb-4">Welcome, {{ request.user.first_name|default:"Admin" }} 👋</h1>
+
+  <!-- Cards Row -->
+  <div class="row g-3">
+    <div class="col-md-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h5>Total Destinations</h5>
+          <p class="fs-2 counter" data-target="{{ spots_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5>Active Users</h5>
+          <p class="fs-2 counter" data-target="{{ users_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <h5>AR Scenes</h5>
+          <p class="fs-2 counter" data-target="{{ ar_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body">
+          <h5>Pending Requests</h5>
+          <p class="fs-2 counter" data-target="{{ pending_requests }}">0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Tourist Spots Table -->
+  <div class="card mt-4">
+    <div class="card-header">Recent Tourist Spots</div>
+    <div class="card-body table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for spot in latest_spots %}
+          <tr>
+            <td>{{ spot.name }}</td>
+            <td>{{ spot.city.name }}</td> {# Changed to spot.city.name as location is a ForeignKey to CityMunicipality #}
+            <td>
+              {% if spot.is_active %}
+                <span class="badge bg-success">Active</span>
+              {% else %}
+                <span class="badge bg-secondary">Inactive</span>
+              {% endif %}
+            </td>
+            <td class="text-end">
+              <a href="{% url 'admin_dash:spots:edit' spot.id %}" class="btn btn-sm btn-outline-primary">
+                <i class="fa fa-pen"></i>
+              </a>
+              <a href="{% url 'admin_dash:spots:delete' spot.id %}" class="btn btn-sm btn-outline-danger">
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="text-center text-muted">No tourist spots found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Visitor Statistics -->
+  <div class="card mt-4">
+    <div class="card-header">Visitor Statistics</div>
+      <div class="card-body">
+      <canvas id="visitorChart" height="100"></canvas>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "dashboards/dashboard_base.html" %}
+
+{% block title %}{% if user %}Edit{% else %}Add{% endif %} User{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>{% if user %}Edit{% else %}Add{% endif %} User</h1>
+    <a href="{% url 'admin_dash:users:list' %}" class="btn btn-secondary">
+      <i class="fa-solid fa-arrow-left me-2"></i> Back to List
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="id_username" class="form-label">Username</label>
+              {{ form.username }}
+            </div>
+            <div class="mb-3">
+              <label for="id_first_name" class="form-label">First Name</label>
+              {{ form.first_name }}
+            </div>
+            <div class="mb-3">
+              <label for="id_last_name" class="form-label">Last Name</label>
+              {{ form.last_name }}
+            </div>
+            <div class="mb-3">
+              <label for="id_email" class="form-label">Email</label>
+              {{ form.email }}
+            </div>
+            <div class="mb-3">
+              <label for="id_bio" class="form-label">Bio</label>
+              {{ form.bio }}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="id_profile_image" class="form-label">Profile Image</label>
+              {{ form.profile_image }}
+              {% if user.profile_image %}
+                <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" class="img-fluid mt-2">
+              {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_role" class="form-label">Role</label>
+                {{ form.role }}
+            </div>
+            <div class="form-check mb-3">
+                {{ form.is_active }}
+                <label for="id_is_active" class="form-check-label">Active</label>
+            </div>
+            <div class="form-check mb-3">
+                {{ form.is_staff }}
+                <label for="id_is_staff" class="form-check-label">Staff</label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% load static %}
+
+<header class="site-header shadow-sm sticky-top bg-white">
+  <div class="container d-flex align-items-center justify-content-between py-3">
+
+    <!-- Logo -->
+    <a href="{% url 'tourism:index' %}" class="navbar-brand fw-bold text-primary">
+      <img src="{% static 'images/travelguide_logo.png' %}" alt="Bicol TravelGuide" height="40">
+    </a>
+
+    <!-- Menu Links -->
+    <nav class="d-none d-md-flex align-items-center">
+      <ul class="nav">
+
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tourism:index' %}">Home</a>
+        </li>
+
+        <!-- Explore Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown">
+            Explore
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'tourism:province-list' %}">Provinces</a></li>
+            <li><a class="dropdown-item" href="{% url 'tourism:places_to_go' %}">Places to Go</a></li>
+            <li><a class="dropdown-item" href="{% url 'tourism:spot-list' %}">Tourist Spots</a></li>
+          </ul>
+        </li>
+
+        <!-- Plan Your Trip Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button" data-bs-toggle="dropdown">
+            Plan Your Trip
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'tourism:hotel-list' %}">Hotels</a></li>
+            <li><a class="dropdown-item" href="{% url 'tourism:restaurant-list' %}">Restaurants</a></li>
+            <li><a class="dropdown-item" href="{% url 'tourism:plan_your_trip' %}">Travel Tips</a></li>
+          </ul>
+        </li>
+
+        <!-- Events -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tourism:blog' %}">Events</a>
+        </li>
+
+        <!-- Role-based Dashboard -->
+        {% if user.is_authenticated %}
+          {% if user.role == "Admin" %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'admin_dash:dashboard' %}">Dashboard</a></li>
+          {% elif user.role == "Tourist" %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'tourist_dash:dashboard' %}">Dashboard</a></li>
+          {% elif user.role == "Tourism Officer" %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'tourism_officer_dash:dashboard' %}">Dashboard</a></li>
+          {% elif user.role == "Event Organizer" %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'event_organizer_dash:dashboard' %}">Dashboard</a></li>
+          {% elif user.role == "Business Owner" %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'business_owner_dash:dashboard' %}">Dashboard</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+    </nav>
+
+    <!-- User Section -->
+    <div class="d-flex align-items-center">
+      {% if user.is_authenticated %}
+        <div class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            Hi, {{ user.username }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="{% url 'account_logout' %}">Logout</a></li>
+          </ul>
+        </div>
+      {% else %}
+        <div>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-primary btn-sm me-2">Sign In</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-primary btn-sm">Sign Up</a>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</header>

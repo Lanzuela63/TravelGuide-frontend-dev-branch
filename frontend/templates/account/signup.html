@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static widget_tweaks %}
+{% load socialaccount %}
+
+{% block extra_css %}
+<style>
+  .auth-card { border-radius: 1rem; }
+  .form-floating > .form-control { height: 56px; padding: 1rem .75rem; }
+  .form-floating > label { padding: .75rem .75rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="card shadow-lg auth-card w-100" style="max-width: 480px;">
+    <div class="card-body p-5">
+      <h2 class="text-center mb-4">Create an Account</h2>
+
+      <form method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+
+        <!-- Username -->
+        <div class="form-floating mb-3">
+          {% render_field form.username class="form-control" placeholder="Username" %}
+          <label for="{{ form.username.id_for_label }}">Username</label>
+          {% for error in form.username.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Email -->
+        <div class="form-floating mb-3">
+          {% render_field form.email class="form-control" placeholder="you@example.com" %}
+          <label for="{{ form.email.id_for_label }}">Email</label>
+          {% for error in form.email.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+          {% render_field form.password1 class="form-control" placeholder="Password" %}
+          <label for="{{ form.password1.id_for_label }}">Password</label>
+          {% for error in form.password1.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-floating mb-3">
+          {% render_field form.password2 class="form-control" placeholder="Confirm Password" %}
+          <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+          {% for error in form.password2.errors %}
+            <div class="invalid-feedback d-block">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3">Sign Up</button>
+      </form>
+
+      <div class="text-center my-2 text-muted">or sign up with</div>
+
+      <div class="d-grid gap-2">
+        <a href="{% provider_login_url 'google' process='login' %}" class="btn btn-light border">
+          <img src="{% static 'img/google.svg' %}" width="18" height="18" class="me-2"> Google
+        </a>
+        <a href="{% provider_login_url 'facebook' process='login' %}" class="btn btn-light border">
+          <img src="{% static 'img/facebook.svg' %}" width="18" height="18" class="me-2"> Facebook
+        </a>
+      </div>
+
+      <p class="text-center mt-4 mb-0">
+        Already have an account? <a href="{% url 'account_login' %}">Sign in</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

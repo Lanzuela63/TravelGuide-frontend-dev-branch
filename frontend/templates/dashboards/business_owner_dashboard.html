@@ -1,0 +1,183 @@
+{% extends "dashboards/business_owner_base.html" %}
+
+{% block title %}Business Owner Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <h1 class="mb-4">Welcome, {{ request.user.first_name|default:"Business Owner" }} 👋</h1>
+
+  <!-- Cards Row -->
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h5>My Businesses</h5>
+          <p class="fs-2 counter" data-target="{{ my_businesses_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <h5>Pending Approval</h5>
+          <p class="fs-2 counter" data-target="{{ pending_businesses_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5>Total Approved</h5>
+          <p class="fs-2 counter" data-target="{{ total_approved_businesses }}">0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="row g-3 mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Business Approval Status</div>
+        <div class="card-body">
+          <canvas id="approvalStatusChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Business Creation Trend</div>
+        <div class="card-body">
+          <canvas id="creationTrendChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Businesses Table -->
+  <div class="card mt-4">
+    <div class="card-header">Recent Businesses</div>
+    <div class="card-body table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Approved</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for business in latest_businesses %}
+          <tr>
+            <td>{{ business.name }}</td>
+            <td>{{ business.category.name|default:"N/A" }}</td>
+            <td>{{ business.city.name|default:"N/A" }}</td>
+            <td>
+              {% if business.is_active %}
+                <span class="badge bg-success">Active</span>
+              {% else %}
+                <span class="badge bg-secondary">Inactive</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if business.is_approved %}
+                <span class="badge bg-success">Yes</span>
+              {% else %}
+                <span class="badge bg-warning">No</span>
+              {% endif %}
+            </td>
+            <td class="text-end">
+              <a href="{% url 'business_owner_dash:business_edit' business.id %}" class="btn btn-sm btn-outline-primary">
+                <i class="fa fa-pen"></i>
+              </a>
+              <a href="{% url 'business_owner_dash:business_delete' business.id %}" class="btn btn-sm btn-outline-danger">
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6" class="text-center text-muted">No recent businesses found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Business Approval Status Chart (Pie Chart)
+  const approvalStatusCtx = document.getElementById('approvalStatusChart');
+  if (approvalStatusCtx) {
+    new Chart(approvalStatusCtx, {
+      type: 'pie',
+      data: {
+        labels: {{ approval_chart_data.labels|safe }},
+        datasets: [{
+          data: {{ approval_chart_data.data }},
+          backgroundColor: ['#28a745', '#ffc107'], // Green for Approved, Yellow for Pending
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: false,
+            text: 'Business Approval Status'
+          }
+        }
+      }
+    });
+  }
+
+  // Business Creation Trend Chart (Line Chart)
+  const creationTrendCtx = document.getElementById('creationTrendChart');
+  if (creationTrendCtx) {
+    new Chart(creationTrendCtx, {
+      type: 'line',
+      data: {
+        labels: {{ creation_chart_labels|safe }},
+        datasets: [{
+          label: 'Businesses Created',
+          data: {{ creation_chart_data }},
+          borderColor: '#007bff', // Blue
+          backgroundColor: 'rgba(0, 123, 255, 0.2)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: false,
+            text: 'Business Creation Trend'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1 // Ensure integer steps for count
+            }
+          }
+        }
+      }
+    });
+  }
+</script>
+{% endblock %}

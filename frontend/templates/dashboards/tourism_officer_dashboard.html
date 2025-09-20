@@ -1,0 +1,239 @@
+{% extends "dashboards/tourism_officer_base.html" %}
+
+{% block title %}Tourism Officer Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <h1 class="mb-4">Welcome, {{ request.user.first_name|default:"Tourism Officer" }} 👋</h1>
+
+  <!-- Cards Row -->
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h5>Total Tourist Spots</h5>
+          <p class="fs-2 counter" data-target="{{ total_spots_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5>Active Tourist Spots</h5>
+          <p class="fs-2 counter" data-target="{{ active_spots_count }}">0</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <h5>Inactive Tourist Spots</h5>
+          <p class="fs-2 counter" data-target="{{ inactive_spots_count }}">0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="row g-3 mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Tourist Spot Status</div>
+        <div class="card-body">
+          <canvas id="spotStatusChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Tourist Spot Creation Trend</div>
+        <div class="card-body">
+          <canvas id="creationTrendChart" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Calendar -->
+  <div class="card mt-4">
+    <div class="card-header">Event Calendar</div>
+    <div class="card-body">
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <!-- Recent Tourist Spots Table -->
+  <div class="card mt-4">
+    <div class="card-header">Recent Tourist Spots</div>
+    <div class="card-body table-responsive">
+      <table class="table align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for spot in latest_spots %}
+          <tr>
+            <td>{{ spot.name }}</td>
+            <td>{{ spot.city.name }}</td>
+            <td>
+              {% if spot.is_active %}
+                <span class="badge bg-success">Active</span>
+              {% else %}
+                <span class="badge bg-secondary">Inactive</span>
+              {% endif %}
+            </td>
+            <td class="text-end">
+              <a href="{% url 'tourism_officer_dash:spot_edit' spot.id %}" class="btn btn-sm btn-outline-primary">
+                <i class="fa fa-pen"></i>
+              </a>
+              <a href="{% url 'tourism_officer_dash:spot_delete' spot.id %}" class="btn btn-sm btn-outline-danger">
+                <i class="fa fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" class="text-center text-muted">No recent tourist spots found.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- Event Details Modal -->
+<div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventDetailsModalLabel">Event Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="text-muted">Title:</h6>
+        <p id="modalEventTitle"></p>
+        <h6 class="text-muted">Date:</h6>
+        <p id="modalEventDate"></p>
+        <h6 class="text-muted">Time:</h6>
+        <p id="modalEventTime"></p>
+        <h6 class="text-muted">Location:</h6>
+        <p id="modalEventLocation"></p>
+        <h6 class="text-muted">Description:</h6>
+        <p id="modalEventDescription"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+<script>
+  // Tourist Spot Status Chart (Pie Chart)
+  const spotStatusCtx = document.getElementById('spotStatusChart');
+  if (spotStatusCtx) {
+    new Chart(spotStatusCtx, {
+      type: 'pie',
+      data: {
+        labels: {{ spot_status_chart_data.labels|safe }},
+        datasets: [{
+          data: {{ spot_status_chart_data.data }},
+          backgroundColor: ['#28a745', '#ffc107'], // Green for Active, Yellow for Inactive
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: false,
+            text: 'Tourist Spot Status'
+          }
+        }
+      }
+    });
+  }
+
+  // Tourist Spot Creation Trend Chart (Line Chart)
+  const creationTrendCtx = document.getElementById('creationTrendChart');
+  if (creationTrendCtx) {
+    new Chart(creationTrendCtx, {
+      type: 'line',
+      data: {
+        labels: {{ creation_chart_labels|safe }},
+        datasets: [{
+          label: 'Tourist Spots Created',
+          data: {{ creation_chart_data }},
+          borderColor: '#007bff', // Blue
+          backgroundColor: 'rgba(0, 123, 255, 0.2)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: false,
+            text: 'Tourist Spot Creation Trend'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1 // Ensure integer steps for count
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // FullCalendar Initialization
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    if (calendarEl) {
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        events: {{ calendar_events|safe }},
+        eventClick: function(info) {
+          // Populate modal with event details
+          document.getElementById('modalEventTitle').innerText = info.event.title;
+          document.getElementById('modalEventDate').innerText = info.event.start.toLocaleDateString();
+          document.getElementById('modalEventTime').innerText = info.event.extendedProps.time;
+          document.getElementById('modalEventLocation').innerText = info.event.extendedProps.location;
+          document.getElementById('modalEventDescription').innerText = info.event.extendedProps.description;
+
+          // Show the modal
+          var eventDetailsModal = new bootstrap.Modal(document.getElementById('eventDetailsModal'));
+          eventDetailsModal.show();
+        }
+      });
+      calendar.render();
+    }
+  });
+</script>
+{% endblock %}

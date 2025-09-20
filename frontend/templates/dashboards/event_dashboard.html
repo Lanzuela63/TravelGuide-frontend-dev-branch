@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Event Dashboard</h2>
+
+  <!-- Dashboard Cards -->
+  <div class="row">
+    {% for card in dashboard_cards %}
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ card.title }}</h5>
+            <p class="display-6">{{ card.value }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Recent Events -->
+  <h3 class="mt-5">Recent Events</h3>
+  {% if latest_events %}
+    <ul class="list-group">
+      {% for event in latest_events %}
+        <li class="list-group-item">{{ event.name }} ({{ event.start_date|date:"M d, Y" }})</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No events available.</p>
+  {% endif %}
+</div>
+{% endblock %}

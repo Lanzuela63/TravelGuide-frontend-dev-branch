@@ -1,0 +1,84 @@
+{% extends "dashboards/tourist_base.html" %}
+
+{% block title %}Tourist Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <h1 class="mb-4">Welcome, {{ request.user.first_name|default:"Tourist" }} 👋</h1>
+
+  <!-- Recommended Tourist Spots -->
+  <div class="card mt-4">
+    <div class="card-header">Recommended Tourist Spots</div>
+    <div class="card-body">
+      <div class="row">
+        {% for spot in recommended_spots %}
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <img src="{{ spot.image.url }}" class="card-img-top" alt="{{ spot.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ spot.name }}</h5>
+              <p class="card-text">{{ spot.city.name }}, {{ spot.city.province.name }}</p>
+              <a href="#" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+          <p class="text-muted">No recommended spots at the moment.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Upcoming Events -->
+  <div class="card mt-4">
+    <div class="card-header">Upcoming Events</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        {% for event in upcoming_events %}
+        <li class="list-group-item">
+          <strong>{{ event.title }}</strong> - {{ event.date|date:"M d, Y" }} at {{ event.time|time:"H:i" }} ({{ event.location }})
+        </li>
+        {% empty %}
+        <li class="list-group-item text-muted">No upcoming events.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Saved Destinations -->
+  <div class="card mt-4">
+    <div class="card-header">Saved Destinations</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        {% for saved_spot in saved_spots %}
+        <li class="list-group-item">
+          <strong>{{ saved_spot.spot.name }}</strong> - {{ saved_spot.spot.city.name }}, {{ saved_spot.spot.city.province.name }}
+        </li>
+        {% empty %}
+        <li class="list-group-item text-muted">No saved destinations.</li>
+        {% endfor %}
+      </ul>
+      <a href="{% url 'tourist_dash:saved_spots_list' %}" class="btn btn-link mt-2">View All Saved Destinations</a>
+    </div>
+  </div>
+
+  <!-- New AR Features -->
+  <div class="card mt-4">
+    <div class="card-header">New AR Features</div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        {% for ar_scene in new_ar_features %}
+        <li class="list-group-item">
+          <strong>{{ ar_scene.name }}</strong> - {{ ar_scene.description|truncatewords:10 }} (Added: {{ ar_scene.created_at|date:"M d, Y" }})
+        </li>
+        {% empty %}
+        <li class="list-group-item text-muted">No new AR features.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

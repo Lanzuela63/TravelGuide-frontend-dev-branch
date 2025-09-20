@@ -1,0 +1,38 @@
+<div class="mb-3">
+  <label for="province" class="form-label">Province</label>
+  <select id="province" name="province" class="form-select">
+    <option value="">Select Province</option>
+    {% for province in provinces %}
+      <option value="{{ province.id }}">{{ province.name }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="mb-3">
+  <label for="city" class="form-label">City/Municipality</label>
+  <select id="city" name="city" class="form-select">
+    <option value="">Select a city</option>
+  </select>
+</div>
+
+<script>
+document.getElementById("province").addEventListener("change", function () {
+  const provinceId = this.value;
+  const citySelect = document.getElementById("city");
+
+  citySelect.innerHTML = "<option>Loading...</option>";
+
+  if (provinceId) {
+    fetch(`/api/tourism/provinces/${provinceId}/cities/`)
+      .then(response => response.json())
+      .then(data => {
+        citySelect.innerHTML = '<option value="">Select a city</option>';
+        data.forEach(city => {
+          citySelect.innerHTML += `<option value="${city.id}">${city.name}</option>`;
+        });
+      });
+  } else {
+    citySelect.innerHTML = '<option value="">Select a city</option>';
+  }
+});
+</script>

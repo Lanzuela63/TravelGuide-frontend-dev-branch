@@ -1,0 +1,50 @@
+{% extends "dashboards/event_organizer_base.html" %}
+
+{% block title %}{% if event %}Edit{% else %}Add{% endif %} Event{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>{% if event %}Edit{% else %}Add{% endif %} Event</h1>
+    <a href="{% url 'event_organizer_dash:event_list' %}" class="btn btn-secondary">
+      <i class="fa-solid fa-arrow-left me-2"></i> Back to List
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label for="id_title" class="form-label">Title</label>
+          {{ form.title }}
+        </div>
+        <div class="mb-3">
+          <label for="id_description" class="form-label">Description</label>
+          {{ form.description }}
+        </div>
+        <div class="mb-3">
+          <label for="id_location" class="form-label">Location</label>
+          {{ form.location }}
+        </div>
+        <div class="mb-3">
+          <label for="id_date" class="form-label">Date</label>
+          {{ form.date }}
+        </div>
+        <div class="mb-3">
+          <label for="id_time" class="form-label">Time</label>
+          {{ form.time }}
+        </div>
+        <div class="mb-3">
+          <label for="id_status" class="form-label">Status</label>
+          {{ form.status }}
+        </div>
+        {# is_approved is managed by admin #}
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
