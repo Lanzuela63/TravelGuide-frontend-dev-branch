@@ -9,11 +9,11 @@
 // Navbar position
 // Navbar themes
 
-
-// Navbar
-//
-// Provide a static navbar from which we expand to create full-width, fixed, and
-// other navbar variations.
+// ======= Custom additions for compact navbar & color tweaks =======
+$navbar-padding-y: 0.5rem !default;              // Reduced vertical padding
+$navbar-brand-padding-y: 0.25rem !default;       // Reduced brand vertical padding
+$navbar-brand-font-size: 1.15rem !default;       // Slightly smaller font size
+$navbar-nav-link-padding-x: 1.2rem !default;     // Default horizontal padding
 
 .navbar {
   position: relative;
@@ -23,21 +23,17 @@
   justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
 
-  // Because flex properties aren't inherited, we need to redeclare these first
-  // few properities so that content nested within behave properly.
   > .container,
   > .container-fluid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    min-height: 48px;
   }
 }
-
-
-// Navbar brand
-//
-// Used for brand, project, or site names.
 
 .navbar-brand {
   display: inline-block;
@@ -51,12 +47,11 @@
   @include hover-focus {
     text-decoration: none;
   }
+
+  img {
+    height: 32px !important; // Reduce logo image height
+  }
 }
-
-
-// Navbar nav
-//
-// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
   display: flex;
@@ -64,6 +59,26 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
+  .nav-link,
+  .dropdown-toggle,
+  .dropdown-item {
+    color: #333333 !important;
+    font-weight: 500;
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+    font-size: 1rem !important;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus,
+  .dropdown-toggle:hover,
+  .dropdown-toggle:focus,
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    color: #000000 !important;
+  }
 
   .nav-link {
     padding-right: 0;
@@ -76,31 +91,26 @@
   }
 }
 
-
-// Navbar text
-//
-//
-
 .navbar-text {
   display: inline-block;
-  padding-top: $nav-link-padding-y;
-  padding-bottom: $nav-link-padding-y;
+  padding-top: 0.3rem !important;
+  padding-bottom: 0.3rem !important;
+  color: #333333 !important;
+  font-size: 1rem !important;
+  a {
+    color: #333333 !important;
+    @include hover-focus {
+      color: #000000 !important;
+    }
+  }
 }
 
+// ======= End custom additions =======
 
 // Responsive navbar
-//
-// Custom styles for responsive collapsing and toggling of navbar contents.
-// Powered by the collapse Bootstrap JavaScript plugin.
-
-// When collapsed, prevent the toggleable navbar contents from appearing in
-// the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
-// on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
-  // For always expanded or extra full navbars, ensure content aligns itself
-  // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
 }
 
@@ -109,22 +119,17 @@
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
-  background-color: transparent; // remove default button style
-  border: $border-width solid transparent; // remove default button style
+  background-color: transparent;
+  border: $border-width solid transparent;
   @include border-radius($navbar-toggler-border-radius);
-
   @include hover-focus {
     text-decoration: none;
   }
-
-  // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
   &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 }
 
-// Keep as a separate element so folks can easily override it with another icon
-// or image file as needed.
 .navbar-toggler-icon {
   display: inline-block;
   width: 1.5em;
@@ -168,16 +173,13 @@
           }
         }
 
-        // For nesting containers, have to redeclare for alignment purposes
         > .container,
         > .container-fluid {
           flex-wrap: nowrap;
         }
 
         .navbar-collapse {
-          display: flex !important;  // stylelint-disable-line declaration-no-important
-
-          // Changes flex-bases to auto because of an IE10 bug
+          display: flex !important;
           flex-basis: auto;
         }
 
@@ -189,16 +191,10 @@
   }
 }
 
-
 // Navbar themes
-//
-// Styles for switching between navbars with light or dark background.
-
-// Dark links against a light background
 .navbar-light {
   .navbar-brand {
     color: $navbar-light-active-color;
-
     @include hover-focus {
       color: $navbar-light-active-color;
     }
@@ -207,16 +203,13 @@
   .navbar-nav {
     .nav-link {
       color: $navbar-light-color;
-
       @include hover-focus {
         color: $navbar-light-hover-color;
       }
-
       &.disabled {
         color: $navbar-light-disabled-color;
       }
     }
-
     .show > .nav-link,
     .active > .nav-link,
     .nav-link.show,
@@ -238,7 +231,6 @@
     color: $navbar-light-color;
     a {
       color: $navbar-light-active-color;
-
       @include hover-focus {
         color: $navbar-light-active-color;
       }
@@ -246,11 +238,9 @@
   }
 }
 
-// White links against a dark background
 .navbar-dark {
   .navbar-brand {
     color: $navbar-dark-active-color;
-
     @include hover-focus {
       color: $navbar-dark-active-color;
     }
@@ -259,16 +249,13 @@
   .navbar-nav {
     .nav-link {
       color: $navbar-dark-color;
-
       @include hover-focus {
         color: $navbar-dark-hover-color;
       }
-
       &.disabled {
         color: $navbar-dark-disabled-color;
       }
     }
-
     .show > .nav-link,
     .active > .nav-link,
     .nav-link.show,
@@ -290,7 +277,6 @@
     color: $navbar-dark-color;
     a {
       color: $navbar-dark-active-color;
-
       @include hover-focus {
         color: $navbar-dark-active-color;
       }

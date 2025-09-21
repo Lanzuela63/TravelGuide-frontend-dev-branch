@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 0.75rem 0; /* Smaller height */
   background: transparent;
   transition: all 0.4s ease;
   z-index: 1000;
@@ -17,7 +17,7 @@
 
 /* On scroll - shrink */
 .site-header.scrolled {
-  padding: 0.6rem 0;
+  padding: 0.4rem 0; /* Even smaller on scroll */
   background: rgba(0, 0, 0, 0.8);  /* darker bg for readability */
   backdrop-filter: blur(8px);
 }
@@ -27,32 +27,54 @@
 }
 
 /* Navbar Links */
+.nav .nav-link,
+.navbar-nav .nav-link,
 .site-menu li a {
-  color: #fff;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s ease;
+  color: #333333 !important; /* dark grey */
+  font-weight: 500;
+  padding: 0.3rem 1rem !important;   /* smaller vertical padding */
+  font-size: 1rem !important;
+  transition: color 0.18s;
   text-decoration: none;
 }
 
+.nav .nav-link:hover,
+.navbar-nav .nav-link:hover,
 .site-menu li a:hover {
-  color: #ffcc00;  /* highlight hover */
+  color: #000 !important; /* black on hover */
 }
 
-/* Dropdown Fix */
+/* Dropdown Menu */
 .dropdown-menu {
   background: #fff;
   border: none;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem; /* Slightly reduced */
 }
 
-.dropdown-menu a {
-  color: #333;
-  padding: 0.5rem 1rem;
+.dropdown-menu a,
+.dropdown-item {
+  color: #333333 !important;
+  font-size: 1rem !important;
+  padding: 0.3rem 1rem !important;
+  transition: color 0.18s;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.dropdown-item:hover {
   background: #f8f9fa;
-  color: #000;
+  color: #000 !important;
+}
+
+/* User Dropdown */
+.dropdown-toggle {
+  color: #333333 !important;
+  font-weight: 500;
+  font-size: 1rem !important;
+  padding: 0.3rem 1rem !important;
+  transition: color 0.18s;
+}
+.dropdown-toggle:hover {
+  color: #000 !important;
 }
 
 /* Hover Dropdown */
@@ -60,3 +82,5 @@
   display: block;
   margin-top: 0; 
 }
+
+/* Let the logo keep its original size; no override here */
