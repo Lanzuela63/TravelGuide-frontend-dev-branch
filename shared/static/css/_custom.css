@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.75rem 0; /* Smaller height */
+  padding: 1.5rem 0;
   background: transparent;
   transition: all 0.4s ease;
   z-index: 1000;
@@ -17,7 +17,7 @@
 
 /* On scroll - shrink */
 .site-header.scrolled {
-  padding: 0.4rem 0; /* Even smaller on scroll */
+  padding: 0.6rem 0;
   background: rgba(0, 0, 0, 0.8);  /* darker bg for readability */
   backdrop-filter: blur(8px);
 }
@@ -27,60 +27,70 @@
 }
 
 /* Navbar Links */
-.nav .nav-link,
-.navbar-nav .nav-link,
 .site-menu li a {
-  color: #333333 !important; /* dark grey */
-  font-weight: 500;
-  padding: 0.3rem 1rem !important;   /* smaller vertical padding */
-  font-size: 1rem !important;
-  transition: color 0.18s;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
   text-decoration: none;
 }
 
-.nav .nav-link:hover,
-.navbar-nav .nav-link:hover,
 .site-menu li a:hover {
-  color: #000 !important; /* black on hover */
+  color: #ffcc00;  /* highlight hover */
 }
 
-/* Dropdown Menu */
+/* Dropdown Fix */
 .dropdown-menu {
   background: #fff;
   border: none;
-  margin-top: 0.3rem; /* Slightly reduced */
+  margin-top: 0.5rem;
 }
 
-.dropdown-menu a,
-.dropdown-item {
-  color: #333333 !important;
-  font-size: 1rem !important;
-  padding: 0.3rem 1rem !important;
-  transition: color 0.18s;
+.dropdown-menu a {
+  color: #333;
+  padding: 0.5rem 1rem;
 }
 
-.dropdown-menu a:hover,
-.dropdown-item:hover {
+.dropdown-menu a:hover {
   background: #f8f9fa;
-  color: #000 !important;
+  color: #000;
 }
 
-/* User Dropdown */
-.dropdown-toggle {
-  color: #333333 !important;
-  font-weight: 500;
-  font-size: 1rem !important;
-  padding: 0.3rem 1rem !important;
-  transition: color 0.18s;
-}
-.dropdown-toggle:hover {
-  color: #000 !important;
-}
-
-/* Hover Dropdown */
 .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0; 
 }
+.footer-links .extra {
+  display: none;
+}
 
-/* Let the logo keep its original size; no override here */
+.footer-links.show-all .extra {
+  display: list-item; 
+}
+
+.show-more {
+  font-size: 14px;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.show-more:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.show-more.hidden {
+  display: none;
+}
+
+
+.footer-hidden {
+  max-height: 125px;         
+  overflow: hidden;
+  transition: max-height 0.5s ease; 
+}
+
+.footer-hidden.expanded {
+  max-height: 2000px;      
+}

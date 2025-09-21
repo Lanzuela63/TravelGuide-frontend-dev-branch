@@ -12,10 +12,6 @@
     <nav class="d-none d-md-flex align-items-center">
       <ul class="nav">
 
-        <!-- Home -->
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'tourism:index' %}">Home</a>
-        </li>
 
         <!-- Explore Dropdown -->
         <li class="nav-item dropdown">
@@ -29,6 +25,11 @@
           </ul>
         </li>
 
+        <!-- Events -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tourism:blog' %}">Events</a>
+        </li>
+        
         <!-- Plan Your Trip Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button" data-bs-toggle="dropdown">
@@ -41,10 +42,6 @@
           </ul>
         </li>
 
-        <!-- Events -->
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'tourism:blog' %}">Events</a>
-        </li>
       </ul>
     </nav>
 
@@ -57,10 +54,9 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="{% url 'account_logout' %}">Logout</a></li>
+            <li><a href="about.html" class="animsition-link">About Us</a></li>
 
-            <!-- Role-based Dashboard -->
+                <!-- Role-based Dashboard -->
         {% if user.is_authenticated %}
           {% if user.role == "Admin" %}
             <li class="nav-item"><a class="nav-link" href="{% url 'admin_dash:dashboard' %}">Dashboard</a></li>
@@ -74,6 +70,8 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'business_owner_dash:dashboard' %}">Dashboard</a></li>
           {% endif %}
         {% endif %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="{% url 'account_logout' %}">Logout</a></li>
           </ul>
         </div>
       {% else %}
