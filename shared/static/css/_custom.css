@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 0.5rem 0; /* smaller vertical padding */
   background: transparent;
   transition: all 0.4s ease;
   z-index: 1000;
@@ -17,8 +17,8 @@
 
 /* On scroll - shrink */
 .site-header.scrolled {
-  padding: 0.6rem 0;
-  background: rgba(0, 0, 0, 0.8);  /* darker bg for readability */
+  padding: 0.3rem 0; /* even smaller when scrolled */
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
 }
 
@@ -84,7 +84,6 @@
   display: none;
 }
 
-
 .footer-hidden {
   max-height: 125px;         
   overflow: hidden;
@@ -93,4 +92,35 @@
 
 .footer-hidden.expanded {
   max-height: 2000px;      
+}
+
+/* Experience section row and columns: enlarge, fit all 5 in one line */
+.experience-row {
+  gap: 0.5rem;
+}
+.experience-col {
+  flex: 1 1 0;
+  min-width: 170px;
+  max-width: 100%;
+}
+.experience-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+.experience-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.experience-desc {
+  font-size: 1.07rem;
+  line-height: 1.35;
+  max-width: 220px;
+  margin: 0 auto;
+}
+@media (min-width: 1200px) {
+  .experience-img { width: 200px; height: 200px; }
+  .experience-title { font-size: 1.8rem; }
+  .experience-desc { font-size: 1.14rem; }
 }

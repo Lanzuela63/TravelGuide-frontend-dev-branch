@@ -1,7 +1,7 @@
 {% load static %}
 
 <header class="site-header shadow-sm sticky-top bg-white">
-  <div class="container d-flex align-items-center justify-content-between py-3">
+  <div class="container d-flex align-items-center justify-content-between py-1">
 
     <!-- Logo -->
     <a href="{% url 'tourism:index' %}" class="navbar-brand fw-bold text-primary">
@@ -54,7 +54,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a></li>
-            <li><a href="about.html" class="animsition-link">About Us</a></li>
+            <li><a href="{% url 'tourism:about' %}">About Us</a></li>
 
                 <!-- Role-based Dashboard -->
         {% if user.is_authenticated %}

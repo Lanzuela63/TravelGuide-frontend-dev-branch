@@ -6,10 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-    
     <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
-
 
         <section class="site-hero overlay hero-bg">
         <div class="container">
@@ -20,7 +17,6 @@
               Connecting travelers to experiences, culture, and adventure in Bicol.</p>
           </div>
         </div>
-        <!-- <a href="#" class="scroll-down">Scroll Down</a> -->
       </div>
     </section>
     <!-- END section -->
@@ -35,7 +31,6 @@
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
-
             <div class="media media-custom d-block mb-4">
               <a href="#" class="mb-4 d-block">
               <img src="{% static 'images/imagesaboutus/Lanzuela.jpg' %}" alt="Image placeholder" class="img-fluid">
@@ -44,11 +39,10 @@
                 <h2 class="mt-0 mb-3"><a href="#">William Lanzuela</a></h2>
               </div>
             </div>
-
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="200">
             <div class="media media-custom d-block mb-4">
-              <a href="#" class="mb-4 d-block"><img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+              <a href="#" class="mb-4 d-block"><img src="{% static 'images/imagesaboutus/Aringay.jpg' %}" alt="Image placeholder" class="img-fluid"></a>
               <div class="media-body">
                 <span class="meta-post">Leader, Backend Developer</span>
                 <h2 class="mt-0 mb-3"><a href="#">Louie Aringay</a></h2>
@@ -71,16 +65,18 @@
     <div class="section-divider"></div>
     <section class="section">
       <div class="container">
-        <div class="half d-md-flex d-block">
-          <div class="image" data-aos="fade" style="background-image: url('images/hero_1.jpg');"></div>
-          <div class="text" data-aos="fade-right" data-aos-delay="200">
+        <div class="row">
+          <!-- Bicol.png occupies two columns -->
+          <div class="col-lg-8 col-md-8 col-12 d-flex align-items-center justify-content-center" data-aos="fade">
+            <img src="{% static 'images/explore_spots/Bicol.png' %}" alt="Bicol Region Map" class="img-fluid" style="width:100%; max-width:700px; border-radius: 12px;">
+          </div>
+          <!-- About Us column at far right -->
+          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column justify-content-center" data-aos="fade-right" data-aos-delay="200">
             <h2>Our Story</h2>
-            
             <p>Travel is more than just moving from place to place it is about discovering culture, creating memories, and forming meaningful connections. The Bicol Region, with its breathtaking landscapes, unique traditions, and vibrant communities, offers travelers experiences that go beyond the ordinary.
                 This project was created in collaboration with our partners the Provincial Tourism, Culture, and Arts Office (PTCAO), the Sorsogon Provincial Tourism, Culture, and Arts Office (SPTCAO), and Camsur Tourism. Together, we share one vision: to make Bicol’s rich heritage, destinations, and people more accessible to the world through innovation and technology.</p>
             <p>Our system provides accurate and reliable travel information while promoting Bicol’s distinct identity and supporting local businesses. By working hand in hand with PTCAO, SPTCAO, and Camsur Tourism, we aim to strengthen regional tourism, empower communities, and highlight the stories that make Bicol truly unforgettable.
               More than just an academic project, this system is a step toward sustainable tourism—helping our partner offices fulfill their mission of showcasing Bicol’s beauty, culture, and opportunities to both local and global audiences. </p>
-            
           </div>
         </div>
       </div>
@@ -120,11 +116,8 @@
                 and inspire<br> sustainable tourism practices that benefit both the community and the environment.
               </p>
               </div>
-
             </div>
           </div>
-
-        
         </div>
       </div>
     </section>
