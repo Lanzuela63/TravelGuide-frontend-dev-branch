@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="{% static 'css/animsition.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
   <link rel="stylesheet" href="{% static 'app_name/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/backToTop.css' %}">
+
 
   <!-- Compiled Theme Style -->
   <link rel="stylesheet" href="{% sass_src 'scss/style.scss' %}">
@@ -56,6 +58,16 @@
     {% include "tourism/partials/_footer.html" %}
   </div>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop">
+  <!-- Simple arrow icon (SVG) -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+
   <!-- JS Libraries -->
   <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>
@@ -67,6 +79,7 @@
   <script src="{% static 'js/aos.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
   <script src="{% static 'js/footer.js' %}"></script>
+  <script src="{% static 'js/backToTop.js' %}"></script>
 
 <script>
   document.addEventListener("scroll", function () {

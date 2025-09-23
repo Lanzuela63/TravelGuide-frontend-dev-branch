@@ -1,0 +1,36 @@
+/* backToTop.css - Styles specifically for the Back to Top button */
+
+/* Positioning and styling for the button */
+#backToTop {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: grey;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+#backToTop.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background-image: linear-gradient(45deg, #FF4081, #673AB7);  /* Gradient from pink to purple */
+  transform: scale(1.1);  /* Slightly enlarge the button */
+}
+
+#backToTop svg {
+  width: 24px;
+  height: 24px;
+}
