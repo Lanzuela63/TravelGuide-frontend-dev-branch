@@ -857,3 +857,43 @@ textarea.form-control {
   background: #65c0ba;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
 }/*# sourceMappingURL=style.css.map */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 1rem 2rem; /* Adjust based on your design */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav .logo {
+  font-size: 1.5rem;
+  color: #333; /* Adjust colors to match your logo */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  color: #00bcd4; /* Cyan color from the screenshots */
+  text-decoration: none;
+}
+
+nav .user-greeting {
+  color: #00bcd4;
+}

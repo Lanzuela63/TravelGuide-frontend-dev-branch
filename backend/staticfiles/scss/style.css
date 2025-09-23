@@ -39,6 +39,9 @@ h1, h2, h3, h4, h5 {
     text-transform: uppercase;
     font-size: 15px;
     letter-spacing: .2em; }
+  .btn.btn-outline-primary:hover {
+    background: #65c0ba;
+    color: #fff; }
   .btn.btn-primary {
     background: none;
     border-width: 2px; }
@@ -500,6 +503,16 @@ textarea.form-control {
       .owl-carousel.home-slider .owl-dots .owl-dot.active {
         border: 2px solid white;
         background: none; }
+        .owl-carousel.home-slider .owl-dots .owl-dot.active span:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 6px;
+          height: 6px;
+          background: white;
+          border-radius: 50%; }
 
 .owl-carousel.major-caousel {
   box-shadow: 0 10px 70px -10px rgba(0, 0, 0, 0.2); }
