@@ -1,7 +1,7 @@
 {% load static %}
 
 <header class="site-header shadow-sm sticky-top bg-white">
-  <div class="container d-flex align-items-center justify-content-between py-1">
+  <div class="container d-flex align-items-center justify-content-between py-3">
 
     <!-- Logo -->
     <a href="{% url 'tourism:index' %}" class="navbar-brand fw-bold text-primary">
@@ -11,7 +11,6 @@
     <!-- Menu Links -->
     <nav class="d-none d-md-flex align-items-center">
       <ul class="nav">
-
 
         <!-- Explore Dropdown -->
         <li class="nav-item dropdown">
@@ -25,13 +24,6 @@
           </ul>
         </li>
 
-        <!-- Events -->
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'tourism:blog' %}">Events</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'tourism:about' %}">About Us</a>
-        </li>
         <!-- Plan Your Trip Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button" data-bs-toggle="dropdown">
@@ -42,6 +34,16 @@
             <li><a class="dropdown-item" href="{% url 'tourism:restaurant-list' %}">Restaurants</a></li>
             <li><a class="dropdown-item" href="{% url 'tourism:plan_your_trip' %}">Travel Tips</a></li>
           </ul>
+        </li>
+
+        <!-- Events -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tourism:blog' %}">Events</a>
+        </li>
+
+        <!-- About -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tourism:about' %}">About Us</a>
         </li>
 
       </ul>
@@ -55,9 +57,7 @@
             Hi, {{ user.username }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a></li>
-
-                <!-- Role-based Dashboard -->
+            <!-- Role-based Dashboard -->
         {% if user.is_authenticated %}
           {% if user.role == "Admin" %}
             <li class="nav-item"><a class="nav-link" href="{% url 'admin_dash:dashboard' %}">Dashboard</a></li>
@@ -71,6 +71,8 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'business_owner_dash:dashboard' %}">Dashboard</a></li>
           {% endif %}
         {% endif %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'view_profile' %}">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="{% url 'account_logout' %}">Logout</a></li>
           </ul>

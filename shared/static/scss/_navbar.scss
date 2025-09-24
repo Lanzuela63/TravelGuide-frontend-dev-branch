@@ -9,35 +9,36 @@
 // Navbar position
 // Navbar themes
 
-// Vertically compact navbar variables!
-$navbar-padding-y: 0.33rem !default;              // Reduced vertical padding (was 0.5rem or higher)
-$navbar-brand-padding-y: 0.17rem !default;        // Reduced brand padding
-$navbar-brand-font-size: 1rem !default;           // Slightly smaller font
-$navbar-nav-link-padding-x: 1rem !default;        // Default horizontal padding
 
 // Navbar
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
 .navbar {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
 
+  // Because flex properties aren't inherited, we need to redeclare these first
+  // few properities so that content nested within behave properly.
   > .container,
   > .container-fluid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    // Reduce height for compact navbar
-    padding-top: 0.33rem !important;
-    padding-bottom: 0.33rem !important;
-    min-height: 32px;
   }
 }
 
+
 // Navbar brand
+//
+// Used for brand, project, or site names.
+
 .navbar-brand {
   display: inline-block;
   padding-top: $navbar-brand-padding-y;
@@ -50,16 +51,16 @@ $navbar-nav-link-padding-x: 1rem !default;        // Default horizontal padding
   @include hover-focus {
     text-decoration: none;
   }
-
-  img {
-    height: 24px !important; // Smaller logo image
-  }
 }
 
+
 // Navbar nav
+//
+// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
+
 .navbar-nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -67,27 +68,39 @@ $navbar-nav-link-padding-x: 1rem !default;        // Default horizontal padding
   .nav-link {
     padding-right: 0;
     padding-left: 0;
-    padding-top: 0.2rem !important;
-    padding-bottom: 0.2rem !important;
-    font-size: 0.95rem !important;
   }
+
   .dropdown-menu {
     position: static;
     float: none;
   }
 }
 
+
 // Navbar text
+//
+//
+
 .navbar-text {
   display: inline-block;
-  padding-top: 0.2rem !important;
-  padding-bottom: 0.2rem !important;
+  padding-top: $nav-link-padding-y;
+  padding-bottom: $nav-link-padding-y;
 }
 
+
 // Responsive navbar
+//
+// Custom styles for responsive collapsing and toggling of navbar contents.
+// Powered by the collapse Bootstrap JavaScript plugin.
+
+// When collapsed, prevent the toggleable navbar contents from appearing in
+// the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
+// on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
+  // For always expanded or extra full navbars, ensure content aligns itself
+  // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
 }
 
@@ -96,19 +109,22 @@ $navbar-nav-link-padding-x: 1rem !default;        // Default horizontal padding
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
-  background-color: transparent;
-  border: $border-width solid transparent;
+  background-color: transparent; // remove default button style
+  border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
 
   @include hover-focus {
     text-decoration: none;
   }
 
+  // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
   &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 }
 
+// Keep as a separate element so folks can easily override it with another icon
+// or image file as needed.
 .navbar-toggler-icon {
   display: inline-block;
   width: 1.5em;
@@ -118,7 +134,6 @@ $navbar-nav-link-padding-x: 1rem !default;        // Default horizontal padding
   background: no-repeat center center;
   background-size: 100% 100%;
 }
-
 
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
@@ -280,45 +295,5 @@ $navbar-nav-link-padding-x: 1rem !default;        // Default horizontal padding
         color: $navbar-dark-active-color;
       }
     }
-  }
-}
-
-.site-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1020;
-  width: 100%;
-  background: #fff;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-
-  .navbar-brand img {
-    height: 40px !important;
-    transition: height 0.3s;
-  }
-  .container {
-    padding-top: 0.33rem !important;
-    padding-bottom: 0.33rem !important;
-    min-height: 60px;
-    transition: all 0.3s;
-  }
-}
-
-/* Shrink navbar when scrolled */
-.site-header.scrolled {
-  min-height: 40px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  .container {
-    min-height: 40px;
-    padding-top: 0.1rem !important;
-    padding-bottom: 0.1rem !important;
-  }
-  .navbar-brand img {
-    height: 28px !important;
-  }
-  .nav-link {
-    font-size: 0.92rem !important;
-    padding-top: 0.12rem !important;
-    padding-bottom: 0.12rem !important;
   }
 }

@@ -52,8 +52,7 @@ h1, h2, h3, h4, h5 {
 	}
 	&.btn-outline-primary {
 		&:hover {
-			background: $primary;
-			color: $white; 
+			// border: 
 		}
 	}
 	&.btn-primary {
@@ -708,17 +707,7 @@ textarea.form-control {
 					// background: $pr;
 					background: none;
 					span {	
-						&:after {
-							content: "";
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%,-50%);
-							width: 6px;
-							height: 6px;
-							background: rgba(255,255,255,1);
-							border-radius: 50%;
-						}
+						// background: rgba(0,0,0,1);
 					}	
 				}
 			}
