@@ -78,16 +78,44 @@ textarea.form-control {
   line-height: 1;
   font-family: "Abril Fatface", times, serif; }
 
-.site-navbar nav .menu li a {
-  color: #000;
-  font-size: 40px;
-  padding: 5px 10px;
-  position: relative; }
-  .site-navbar nav .menu li a:hover {
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text; }
+.site-navbar {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  min-height: 300px;
+  overflow-y: scroll; }
+  .site-navbar nav {
+    text-align: center; }
+    .site-navbar nav .menu {
+      font-family: "Abril Fatface", times, serif; }
+      .site-navbar nav .menu li a {
+        color: #000;
+        font-size: 40px;
+        padding: 5px 10px;
+        position: relative; }
+        .site-navbar nav .menu li a:hover {
+          color: #65c0ba; }
+      .site-navbar nav .menu li.active a {
+        color: #65c0ba; }
+        .site-navbar nav .menu li.active a:before {
+          width: 100%; }
+  .site-navbar .extra-info a {
+    color: #000; }
+  .site-navbar .extra-info ul li a {
+    color: #000; }
+  .site-navbar .extra-info h3 {
+    font-family: "Mukta Mahee", arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .2em;
+    color: #adb5bd;
+    margin-bottom: 30px; }
+  .site-navbar .extra-info p {
+    color: #212529; }
 
 .full-height {
   height: 100vh;
