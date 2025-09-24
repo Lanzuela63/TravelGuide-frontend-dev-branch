@@ -1073,4 +1073,24 @@ textarea.form-control {
 
 }
 
+/* Fix for About Us hero background and navbar overlap */
+.about-hero-bg {
+  /* Use a fallback color if image is missing */
+  background: #ccc !important;
+  min-height: 70vh;
+  padding-top: 90px; /* Adjust to match the height of your navbar */
+  box-sizing: border-box;
+}
 
+@media (max-width: 991.98px) {
+  .about-hero-bg {
+    padding-top: 110px; /* For mobile, if navbar height increases */
+  }
+}
+
+/* Optional: If you want to use a different image, update below */
+.about-hero-bg {
+  background-image: url('/static/images/Nagsipitfalls.jpg'); /* Replace with your valid image path */
+  background-size: cover;
+  background-position: center;
+}

@@ -1,36 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}About Us - Bicol TravelGuide{% endblock %}
 {% block content %}
-{% static 'css/style.css' %}
-
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <div class="js-animsition animsition" id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
-
-        <section class="site-hero overlay hero-bg">
-        <div class="container">
-        <div class="row site-hero-inner justify-content-center align-items-center">
-          <div class="col-md-10 text-center">
-            <h1 class="heading" data-aos="fade-up">About Us</h1>
-            <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">
-              Connecting travelers to experiences, culture, and adventure in Bicol.</p>
-          </div>
-        </div>
+<section class="site-hero overlay about-hero-bg" style="background-image: url('{% static "images/Nagsipitfalls.jpg" %}'); background-size: cover; background-position: center; min-height: 70vh; padding-top: 100px;">
+  <div class="container">
+    <div class="row site-hero-inner justify-content-center align-items-center">
+      <div class="col-md-10 text-center">
+        <h1 class="heading" data-aos="fade-up">About Us</h1>
+        <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">
+          Connecting travelers to experiences, culture, and adventure in Bicol.
+        </p>
       </div>
-    </section>
-    <!-- END section -->
-    
-    <section class="section">
-      <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-8">
-            <h2 class="heading" data-aos="fade-up">Team</h2>
-            <p class="lead" data-aos="fade-up">We are a group of IT students who collaborated to develop this project as part of our academic journey. With this system, we aim to apply what we have learned in the classroom to a real-world context. While we are still learning and growing, we are committed to doing our best and improving through teamwork, dedication, and continuous learning. This project reflects both our passion for technology and our desire to contribute in our own small way.</p>
-          </div>
-        </div>
-        <div class="row">
+    </div>
+  </div>
+</section>
+<!-- END section -->
+
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-8">
+        <h2 class="heading" data-aos="fade-up">Team</h2>
+        <p class="lead" data-aos="fade-up">
+          We are a group of IT students who collaborated to develop this project as part of our academic journey. With this system, we aim to apply what we have learned in the classroom to a real-world context. While we are still learning and growing, we are committed to doing our best and improving through teamwork, dedication, and continuous learning. This project reflects both our passion for technology and our desire to contribute in our own small way.
+        </p>
+      </div>
+    </div>
+    <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
             <div class="media media-custom d-block mb-4">
               <a href="#" class="mb-4 d-block">
@@ -60,80 +56,46 @@
               </div>
             </div>
           </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-12 d-flex align-items-center justify-content-center" data-aos="fade">
+        <img src="{% static 'images/explore_spots/Bicol.png' %}" alt="Bicol Region Map" class="img-fluid" style="width:100%; max-width:700px; border-radius: 12px;">
+      </div>
+      <div class="col-lg-4 col-md-4 col-12 d-flex flex-column justify-content-center" data-aos="fade-right" data-aos-delay="200">
+        <h2>Our Story</h2>
+        <p>Travel is more than just moving from place to place it is about discovering culture, creating memories, and forming meaningful connections. The Bicol Region, with its breathtaking landscapes, unique traditions, and vibrant communities, offers travelers experiences that go beyond the ordinary.
+          This project was created in collaboration with our partners the Provincial Tourism, Culture, and Arts Office (PTCAO), the Sorsogon Provincial Tourism, Culture, and Arts Office (SPTCAO), and Camsur Tourism. Together, we share one vision: to make Bicol’s rich heritage, destinations, and people more accessible to the world through innovation and technology.</p>
+        <p>Our system provides accurate and reliable travel information while promoting Bicol’s distinct identity and supporting local businesses. By working hand in hand with PTCAO, SPTCAO, and Camsur Tourism, we aim to strengthen regional tourism, empower communities, and highlight the stories that make Bicol truly unforgettable.
+          More than just an academic project, this system is a step toward sustainable tourism—helping our partner offices fulfill their mission of showcasing Bicol’s beauty, culture, and opportunities to both local and global audiences. </p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+<section class="section slider-section">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-md-8">
+        <h2 class="heading" data-aos="fade-up">Discover Bicol With Us</h2>
+        <p class="lead" data-aos="fade-up" data-aos-delay="100">
+          Travel is more than just moving from place to place it’s about experiences, stories, and connections. Through this project, we strive to bring travelers closer to Bicol’s culture, people, and destinations in a meaningful way. By combining technology with a passion for promoting local tourism, we hope to create a platform that not only guides visitors but also uplifts local communities and showcases the beauty of our region to the world.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+          <!-- Mission, Vision, Goal slides here -->
+          <!-- ... -->
         </div>
       </div>
-    </section>
-    <div class="section-divider"></div>
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <!-- Bicol.png occupies two columns -->
-          <div class="col-lg-8 col-md-8 col-12 d-flex align-items-center justify-content-center" data-aos="fade">
-            <img src="{% static 'images/explore_spots/Bicol.png' %}" alt="Bicol Region Map" class="img-fluid" style="width:100%; max-width:700px; border-radius: 12px;">
-          </div>
-          <!-- About Us column at far right -->
-          <div class="col-lg-4 col-md-4 col-12 d-flex flex-column justify-content-center" data-aos="fade-right" data-aos-delay="200">
-            <h2>Our Story</h2>
-            <p>Travel is more than just moving from place to place it is about discovering culture, creating memories, and forming meaningful connections. The Bicol Region, with its breathtaking landscapes, unique traditions, and vibrant communities, offers travelers experiences that go beyond the ordinary.
-                This project was created in collaboration with our partners the Provincial Tourism, Culture, and Arts Office (PTCAO), the Sorsogon Provincial Tourism, Culture, and Arts Office (SPTCAO), and Camsur Tourism. Together, we share one vision: to make Bicol’s rich heritage, destinations, and people more accessible to the world through innovation and technology.</p>
-            <p>Our system provides accurate and reliable travel information while promoting Bicol’s distinct identity and supporting local businesses. By working hand in hand with PTCAO, SPTCAO, and Camsur Tourism, we aim to strengthen regional tourism, empower communities, and highlight the stories that make Bicol truly unforgettable.
-              More than just an academic project, this system is a step toward sustainable tourism—helping our partner offices fulfill their mission of showcasing Bicol’s beauty, culture, and opportunities to both local and global audiences. </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-  <div class="section-divider"></div>
-
-    <section class="section slider-section">
-      <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-          <div class="col-md-8">
-            <h2 class="heading" data-aos="fade-up">Discover Bicol With Us</h2>
-            <p class="lead" data-aos="fade-up" data-aos-delay="100">Travel is more than just moving from place to place it’s about experiences, stories, and connections. Through this project, we strive to bring travelers closer to Bicol’s culture, people, and destinations in a meaningful way. By combining technology with a passion for promoting local tourism, we hope to create a platform that not only guides visitors but also uplifts local communities and showcases the beauty of our region to the world.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
-              <div class="slider-item"  style="text-align: center;">
-              <h2>Mission</h2>
-              <p>Our mission is to provide travelers with a reliable, user-friendly platform that highlights the beauty,<br>
-                culture, and destinations of the Bicol Region. Through technology, we aim to make travel easier 
-                <br>while also supporting local communities and promoting sustainable tourism.</p>
-              </div>
-              <div class="slider-item" style="text-align: center;">
-              <h2>Vision</h2>
-              <p>We envision a connected Bicol where tourism thrives hand in hand with community development. 
-                <br>By bridging travelers and locals, we hope to create meaningful experiences, preserve cultural heritage, 
-                <br>and showcase Bicol as a must-see destination in the Philippines.</p>
-              </div>
-              <div class="slider-item" style="text-align: center;">
-              <h2>Goal</h2>
-              <p>
-                Our goals are to offer accessible and accurate travel information for <br> tourists and locals,
-                promote Bicol’s unique destinations and traditions,<br>
-                support local businesses by providing them greater visibility,
-                and inspire<br> sustainable tourism practices that benefit both the community and the environment.
-              </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
-
-    </div> <!-- .animsition -->
-    
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/animsition.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/script.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </div>
+  </div>
+</section>
+<!-- END section -->
 {% endblock %}
