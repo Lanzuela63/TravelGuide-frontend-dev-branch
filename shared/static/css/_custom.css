@@ -4,10 +4,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 0;
+  height: 100px;
+  padding: 0.5rem 0;
   background: transparent;
   transition: all 0.4s ease;
   z-index: 1000;
+  font-weight: bold !important;
 }
 
 .site-header .container {
@@ -17,13 +19,15 @@
 
 /* On scroll - shrink */
 .site-header.scrolled {
-  padding: 0.6rem 0;
+  padding: 0.25rem 0;
+  height: 70px;
   background: rgba(0, 0, 0, 0.8);  /* darker bg for readability */
   backdrop-filter: blur(8px);
 }
 
 .site-header.scrolled .container {
   max-width: 1140px;
+  max-height: 100%;
 }
 
 /* Navbar Links */
@@ -34,8 +38,10 @@
   text-decoration: none;
 }
 
-.site-menu li a:hover {
-  color: #ffcc00;  /* highlight hover */
+.site-menu li a:hover,
+.site-menu li a:focus,
+.site-menu li a.active {
+background-color: yellow;
 }
 
 /* Dropdown Fix */
