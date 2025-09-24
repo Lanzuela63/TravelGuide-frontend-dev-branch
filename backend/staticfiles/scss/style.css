@@ -86,7 +86,7 @@ textarea.form-control {
   right: 0;
   bottom: 0;
   background: #fff;
-  min-height: 300px;
+  min-height: 30px;
   overflow-y: scroll; }
   .site-navbar nav {
     text-align: center; }

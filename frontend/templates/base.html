@@ -45,7 +45,9 @@
 </head>
 <body>
 
-  <div id="site-wrap">
+  <div class="js-animsition animsition" id="site-wrap" 
+       data-animsition-in-class="fade-in" 
+       data-animsition-out-class="fade-out">
 
     {% include "tourism/partials/_navbar.html" %}
 
@@ -87,15 +89,6 @@
     } else {
       header.classList.remove("scrolled");
     }
-  });
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbarToggler = document.getElementById("navbarToggler");
-    const body = document.body;
-
-    navbarToggler.addEventListener("click", function () {
-      body.classList.toggle("mobile-menu-open");
-    });
   });
 </script>
 
