@@ -26,7 +26,7 @@
 }
 
 #backToTop:hover {
-  background-image: linear-gradient(45deg, #FF4081, #673AB7);  /* Gradient from pink to purple */
+  background-image: linear-gradient(45deg, yellow, green);  /* Gradient from pink to purple */
   transform: scale(1.1);  /* Slightly enlarge the button */
 }
 

@@ -38,16 +38,12 @@
   text-decoration: none;
 }
 
-.site-header li a:hover,
-.site-header li a:focus,
-.site-header li a.active {
-color: #39FF14 !important; // Vibrant neon green
-    text-shadow:
-      0 0 5px #39FF14,
-      0 0 10px #39FF14,
-      0 0 20px #39FF14,
-      0 0 40px #00FF00; // "Shining" effect
-    transition: color 0.2s, text-shadow 0.2s;
+.site-header .nav > .nav-item > .nav-link:hover,
+.site-header .nav > .nav-item > .nav-link:focus,
+.site-header .nav > .nav-item > .nav-link.active {
+  color: #ffffff !important;
+  text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 40px #00FF00;
+  transition: color 0.2s, text-shadow 0.2s;
 }
 
 /* Dropdown Fix */
@@ -78,4 +74,31 @@ color: #39FF14 !important; // Vibrant neon green
 .dropdown-menu a.active {
   color: #ffffff !important;
   background: #00ff00 !important;  /* keep dropdown bg light */
+}
+
+.footer-hidden {
+  max-height: 25px;         
+  overflow: hidden;
+  transition: max-height 0.5s ease; 
+}
+
+.footer-hidden.expanded {
+  max-height: 1500px;      
+}
+
+.show-more {
+  font-size: 14px;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.show-more:focus {
+  outline: none;
+  text-decoration: underline;
+}
+
+.show-more.hidden {
+  display: none;
 }
