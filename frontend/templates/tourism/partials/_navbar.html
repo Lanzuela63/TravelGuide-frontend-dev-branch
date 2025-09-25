@@ -60,15 +60,15 @@
             <!-- Role-based Dashboard -->
         {% if user.is_authenticated %}
           {% if user.role == "Admin" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'admin_dash:dashboard' %}">Dashboard</a></li>
+             <li><a class="dropdown-item" href= "{% url 'admin_dash:dashboard' %}">Dashboard</a></li>
           {% elif user.role == "Tourist" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'tourist_dash:dashboard' %}">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{% url 'tourist_dash:dashboard' %}">Dashboard</a></li>
           {% elif user.role == "Tourism Officer" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'tourism_officer_dash:dashboard' %}">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{% url 'tourism_officer_dash:dashboard' %}">Dashboard</a></li>
           {% elif user.role == "Event Organizer" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'event_organizer_dash:dashboard' %}">Dashboard</a></li>
+           <li><a class="dropdown-item" href="{% url 'event_organizer_dash:dashboard' %}">Dashboard</a></li>
           {% elif user.role == "Business Owner" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'business_owner_dash:dashboard' %}">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{% url 'business_owner_dash:dashboard' %}">Dashboard</a></li>
           {% endif %}
         {% endif %}
             <li><hr class="dropdown-divider"></li>

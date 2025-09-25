@@ -38,10 +38,16 @@
   text-decoration: none;
 }
 
-.site-menu li a:hover,
-.site-menu li a:focus,
-.site-menu li a.active {
-background-color: yellow;
+.site-header li a:hover,
+.site-header li a:focus,
+.site-header li a.active {
+color: #39FF14 !important; // Vibrant neon green
+    text-shadow:
+      0 0 5px #39FF14,
+      0 0 10px #39FF14,
+      0 0 20px #39FF14,
+      0 0 40px #00FF00; // "Shining" effect
+    transition: color 0.2s, text-shadow 0.2s;
 }
 
 /* Dropdown Fix */
@@ -65,4 +71,11 @@ background-color: yellow;
 .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0; 
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus,
+.dropdown-menu a.active {
+  color: #ffffff !important;
+  background: #00ff00 !important;  /* keep dropdown bg light */
 }
