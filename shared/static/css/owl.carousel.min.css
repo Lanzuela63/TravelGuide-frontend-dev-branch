@@ -51,15 +51,18 @@
 
 .owl-carousel .owl-item {
   min-height: 1px;
+  height: 750px;  /* set a fixed height for the carousel items */
   float: left;
   -webkit-backface-visibility: hidden;
   -webkit-touch-callout: none;
 }
 
 .owl-carousel .owl-item img {
-  display: block;
   width: 100%;
+  height: 100%;          /* make the image take full container height */
+  object-fit: cover;     /* crop the image instead of squishing */
 }
+
 
 .owl-carousel .owl-dots.disabled,
 .owl-carousel .owl-nav.disabled {
