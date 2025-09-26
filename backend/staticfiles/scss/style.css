@@ -259,27 +259,31 @@ textarea.form-control {
 .visit-section .visit {
   position: relative;
   top: 0;
-  transition: .3s all ease; }
+  transition: top .2s ease, box-shadow .2s ease; }
   .visit-section .visit a {
     color: #000; }
     .visit-section .visit a:hover {
       color: #65c0ba; }
   .visit-section .visit img {
+    width: 100%;
+    height: 120px !important;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 15px; }
   .visit-section .visit h3 {
     font-size: 20px;
     margin-bottom: 0; }
   .visit-section .visit:hover, .visit-section .visit:focus {
-    top: -1; }
+    top: -4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); }
 
-.visit-section .reviews-star span {
-  font-size: 18px;
-  color: #65c0ba; }
-
-.visit-section .reviews-count {
-  color: #3b3b3b;
-  font-style: italic; }
+.visit-section .row.justify-content-center {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center; }
 
 .primary-bg-text p {
   color: rgba(255, 255, 255, 0.7); }
@@ -542,7 +546,7 @@ textarea.form-control {
   .owl-custom-nav .owl-custom-next {
     padding: 10px;
     font-size: 30px;
-    background: #ccc;
+    background: #cccccc;
     line-height: 0;
     width: 60px;
     text-align: center;
@@ -611,7 +615,9 @@ textarea.form-control {
 .ftco-img-flaticon {
   text-align: center; }
   .ftco-img-flaticon img {
-    width: 70px; }
+    width: 150px;
+    height: 75px;
+    object-fit: cover; }
 
 .side-box, .sidebar-search {
   padding: 30px;
@@ -701,5 +707,22 @@ textarea.form-control {
 .custom-pagination .page-item.active .page-link {
   background: #65c0ba;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2); }
+
+/* --- Scoped image fixes --- */
+/* Top Destinations */
+.visit-section .visit img.img-fluid {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block; }
+
+/* Experience section */
+.experience-row .experience-img.img-fluid {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block; }
 
 /*# sourceMappingURL=style.css.map */

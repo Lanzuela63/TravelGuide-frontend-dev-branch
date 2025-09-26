@@ -314,6 +314,13 @@ textarea.form-control {
 .visit-section .visit img {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 15px;
+  width: 100%;
+      height: 120px !important;       // ✅ consistent image height
+      object-fit: cover;   // ✅ fills card without distortion
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+      margin-bottom: 15px;
 }
 .visit-section .visit h3 {
   font-size: 20px;
@@ -327,7 +334,7 @@ textarea.form-control {
   color: #65c0ba;
 }
 .visit-section .reviews-count {
-  color: #ccc;
+  color: #2d2d2d;
   font-style: italic;
 }
 
@@ -750,7 +757,9 @@ textarea.form-control {
   text-align: center;
 }
 .ftco-img-flaticon img {
-  width: 70px;
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .side-box, .sidebar-search {
@@ -857,3 +866,4 @@ textarea.form-control {
   background: #65c0ba;
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
 }/*# sourceMappingURL=style.css.map */
+

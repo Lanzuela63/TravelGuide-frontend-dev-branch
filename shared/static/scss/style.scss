@@ -363,43 +363,48 @@ textarea.form-control {
 	}	
 }
 .visit-section {
-	
-	.visit {
+  .visit {
+    position: relative;
+    top: 0;
+    transition: top .2s ease, box-shadow .2s ease;
 
-		position: relative;
-		top: 0;
-		transition: .3s all ease;
+    a {
+      color: $black;
+      &:hover {
+        color: $primary;
+      }
+    }
 
-		a {
-			color: $black;
-			&:hover {
-				color: $primary;
-			}
-		}
-		img {
-			box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
-			margin-bottom: 15px;
-		}
-		h3 {
-			font-size: 20px;
-			margin-bottom: 0;
-		}
-		
-		&:hover, &:focus {
-			top: -1;
-		}
-	}
-	.reviews-star {
-		span {
-			font-size: 18px;
-			color: $primary;
-		}
-	}
-	.reviews-count {
-		color: #3b3b3b;
-		font-style: italic;
-	}
+    img {
+      width: 100%;
+      height: 120px !important;       // ✅ consistent image height
+      object-fit: cover;   // ✅ fills card without distortion
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 2px 3px 0 rgba(0,0,0,.2);
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 0;
+    }
+    
+    &:hover, &:focus {
+      top: -4px; // ✅ fixed unit
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15); // subtle lift effect
+    }
+  }
+
+  // make the row behave better
+  .row.justify-content-center {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;           // ✅ spacing between cards
+    justify-content: center;
+  }
 }
+
 
 .primary-bg-text {
 	p {
@@ -771,7 +776,7 @@ textarea.form-control {
 	.owl-custom-next {
 		padding: 10px;
 		font-size: 30px;
-		background: #ccc;
+		background: #cccccc;
 		line-height: 0;
 		width: 60px;
 		text-align: center;
@@ -864,7 +869,10 @@ textarea.form-control {
 .ftco-img-flaticon {
 	text-align: center;
 	img {
-		width: 70px;
+		width: 150px;
+		height: 75px;
+		object-fit: cover;
+	
 	}	
 }
 
@@ -996,3 +1004,24 @@ textarea.form-control {
 		}
 	}
 }
+
+/* --- Scoped image fixes --- */
+
+/* Top Destinations */
+.visit-section .visit img.img-fluid {
+  width: 100%;
+  height: 200px;         // consistent height for all cards
+  object-fit: cover;     // crop to fit, no distortion
+  border-radius: 12px;
+  display: block;
+}
+
+/* Experience section */
+.experience-row .experience-img.img-fluid {
+  width: 100%;
+  height: 180px;         // match desired card height
+  object-fit: cover;     // avoids whitespace
+  border-radius: 12px;
+  display: block;
+}
+

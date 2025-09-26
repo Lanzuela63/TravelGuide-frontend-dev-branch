@@ -366,12 +366,28 @@ textarea.form-control {
   }
 }
 
+.visit-section .row.justify-content-center {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  /* prevents extra gaps between cards */
+}
+
 .visit-section .visit {
   position: relative;
   top: 0;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
+  min-width: 220px;
+  max-width: 220px;
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0;
+  margin-bottom: 18px;
 }
 
 .visit-section .visit a {
@@ -382,19 +398,38 @@ textarea.form-control {
   color: #65c0ba;
 }
 
+@media (max-width: 991px) {
+  .visit-section .visit img {
+    width: 150px;
+    height: 110px;
+  }
+}
+
 .visit-section .visit img {
   -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
   margin-bottom: 15px;
+  width: 200px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+  background: #f9f9f9;
+  transition: box-shadow 0.2s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .visit-section .visit h3 {
-  font-size: 20px;
-  margin-bottom: 0;
+  font-size: 1.18em;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .visit-section .visit:hover, .visit-section .visit:focus {
-  top: -1;
+  top: -1px;
 }
 
 .visit-section .reviews-star span {
@@ -402,9 +437,20 @@ textarea.form-control {
   color: #65c0ba;
 }
 
+.visit-section .reviews-star {
+  color: #29a19c;
+  font-size: 1.2em;
+  margin-bottom: 4px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
 .visit-section .reviews-count {
-  color: #ccc;
+  color: #343a40;
   font-style: italic;
+  font-size: 1em;
+  text-align: center;
 }
 
 .primary-bg-text p {
@@ -1054,4 +1100,27 @@ textarea.form-control {
   background: #65c0ba;
   -webkit-box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+  .visit-section .visit img {
+    width: 95vw;
+    max-width: 340px;
+    height: 96px;
+  }
+}
+
+.visit-section .visit.mb-3 {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Fixed height just for Visit Section images */
+.visit-section .visit-img {
+  width: 100% !important;
+  height: 120px !important;   /* adjust as you like */
+  object-fit: cover !important;
+  border-radius: 6px;         /* optional */
 }
